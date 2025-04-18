@@ -55,6 +55,10 @@ export default function App() {
   const [transferring, setTransferring] = useState(null);
   const [dropTarget, setDropTarget] = useState(null);
   const [dropRefCount, setDropRefCount] = useState(0);
+
+  const submitHref = 'mailto:edimea211@ausdg.us?subject=choice%20day%20response&body='
+    + encodeURI(choices.map(period => period.map(choice => CHOICE_DATA.indexOf(choice)).join(',')).join(';'));
+
   const onDragEnd = useCallback(() => {
     setTransferring(null);
     setDropTarget(null);
@@ -169,6 +173,10 @@ export default function App() {
             ))}
           </div>
         </div>
+      </div>
+      <div className='App-control'>
+        To submit your choices, click <a href={submitHref}>HERE</a> and send the email
+        <strong>from your school account</strong>.
       </div>
     </div>
   );
