@@ -7,7 +7,7 @@ const CHOICE_DATA = [
   {
     name: 'QiGong',
     desc: 'Introduction to QiGong: warm-ups, first 5 moves of Dayan QiGong, a sequence from the '
-      + 'Eight Brocades, moving meditation',
+      + 'Eight Brocades, moving meditation.',
     textColor: 'black',
     backgroundColor: 'pink',
     periods: [1],
@@ -21,27 +21,27 @@ const CHOICE_DATA = [
   },
   {
     name: 'Logic Games',
-    desc: 'Variant sudoku and other logic games such as minesweeper',
+    desc: 'Variant sudoku and other logic games such as minesweeper.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [1],
   },
   {
     name: 'Dalgona Coffee',
-		desc: 'Come join the queens in making dagona coffee, matcha, and fruit teas. You will learn '
-			+ 'how to whip up the most delectable coffee and then you get to DRINK ITT YUMM ',
+		desc: 'Come join the queens in making Dagona coffee, matcha, and fruit teas. You will learn '
+			+ 'how to whip up the most delectable coffee and then you get to DRINK ITT YUMM',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [1],
   },
   {
     name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    desc: 'Are you vegan curious? Come to learn about the many benefits about moving to an '
+      + 'animal-free diet. Try food samples and learn a few vegan hacks.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [1],
   },
-
   {
     name: 'Friendship Bracelet Making',
 		desc: 'During this workshop leadership students will be leading an activity in making friendship '
@@ -54,63 +54,155 @@ const CHOICE_DATA = [
     backgroundColor: 'lightgreen',
     periods: [2],
   },
-
   {
     name: 'Karaoke',
-    desc: 'DESCRIPTION',
+    desc: 'Sing your favorite songs with friends!',
     textColor: 'black',
     backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [2, 3],
   },
-
   {
-    name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    name: 'Murder Mystery',
+    desc: 'Presentation about a fictional local murder and using deductive techniques to solve the '
+      + 'case.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [2],
   },
-
   {
-    name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    name: 'Homeland Security guest speaker',
+    desc: 'Special Agent Smith and her team present on homeland security, their career and '
+      + 'education paths, and some famous cases they worked on.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [2, 3, 4],
   },
-
   {
-    name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    name: 'Reffing & Basketball',
+    desc: 'Come play basketball in the gym with trained referee Mr. Zalvala.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [2, 3, 6],
   },
-
   {
-    name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    name: 'Orienteering & GIS mapping',
+    desc: <>
+      <p>
+        First half: basics of orienteering (competitive navigation sport), reading orienteer's maps,
+        navigation strategies.
+      </p>
+      <p>
+        Second half: presentation on digital mapmaking and geographical information systems
+        (GIS).
+      </p>
+    </>,
     textColor: 'black',
     backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [2, 3],
   },
-
   {
-    name: 'Intro to Veganism',
-    desc: 'DESCRIPTION',
+    name: 'Mocktails',
+    desc: 'Layering and mixing non-alcoholic drinks, in collaboration with Ms. Corbally.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [3],
   },
-
   {
-    name: 'Intro to Veganism',
+    name: 'Red Cross guest speaker',
+    desc: 'Presentation, demonstration, and practice of first aid and CPR on dummies.',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [3, 4],
+  },
+  {
+    name: 'Photography guest speaker',
+    desc: 'Watch guest speaker Aliah\'s presentation on photography techniques and composition.',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [4],
+  },
+  {
+    name: 'Elevating Ramen',
+    desc: 'Play chopstick-practice games to win ingredients to elevate your ramen!',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [4],
+  },
+  {
+    name: 'Robotics Engineering guest speaker',
+    desc: 'Guest speaker Leo Chan discusses ',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [4],
+  },
+  {
+    name: 'Volleyball & Basketball',
+    desc: 'Players are sorted into teams and pitted against each other to test their athletic and '
+      + 'teamwork abilities!',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [4],
+  },
+  {
+    name: 'Social and Board Games',
+    desc: 'Yahtzee, Scattergories, Would You Rather?, Apples to Apples, and similar.',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [5],
+  },
+  {
+    name: 'Music Lessons',
+    desc: 'Have you ever wanted to learn an instrument? Do you love music and want to make it your '
+      + 'own? Do you want to play with other musicians? In this workshop we will break into small groups '
+      + 'and learn new instruments. We have drums, guitars, basses, pianos, and more to learn. If you '
+      + 'have ever wanted to learn any of these instruments then this workshop is your chance to '
+      + 'start. by the end everyone will be able to play together and jam.',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+  {
+    name: 'Youth Commissioner guest speaker',
     desc: 'DESCRIPTION',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [2],
   },
-
+  {
+    name: 'Capture the Flag',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+  {
+    name: 'Just Dance',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+  {
+    name: 'Chemical Engineering guest speaker',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+  {
+    name: 'Introduction to saltwater tanks',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+  {
+    name: 'Ultimate Frisbee',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
 ];
 
 function getDefaultChoices() {
