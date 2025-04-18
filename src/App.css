@@ -1,29 +1,72 @@
 .App {
+  --primary: blue;
+  --on-primary: white;
+  --secondary: lightgray;
+  --on-secondary: black;
+  --background: white;
+  --on-background: black;
+
   font-family: Verdana, sans-serif;
   box-sizing: border-box;
   user-select: none;
+  margin: 10px;
 }
+
 .App-col {
   display: inline-block;
   vertical-align: top;
-  padding: 0 10px;
+  overflow: hidden;
 }
 
 .App-chooser {
-  margin: 0 5%;
+  margin: 0 5% 20px 5%;
   display: flex;
 }
 
 .App-table-header {
+  background-color: var(--primary);
+  color: var(--on-primary);
   font-weight: bold;
   font-size: 24px;
   text-align: center;
+  padding: 5px 15px;
 }
 
 .App-table-row {
+  position: relative;
   font-size: 24px;
   text-align: center;
   cursor: pointer;
+  border-right: 4px solid var(--primary);
+  padding: 5px 15px;
+  vertical-align: middle;
+}
+
+.App-table-row-selected::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: inline-block;
+  width: 0;
+  height: 0;
+  --width: 10px;
+  border-top: var(--width) solid transparent;
+  border-right: calc(2 * var(--width)) solid var(--primary);
+  border-bottom: var(--width) solid transparent;
+  content: '';
+}
+
+.App-table-row-alt {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+}
+
+.App-ranking-body {
+  padding: 10px;
+  overflow-y: auto;
+  height: 0;
+  min-height: 100%;
 }
 
 .App-ranking {
@@ -42,7 +85,8 @@
   opacity: 0.5;
 }
 
-/*.App-ranking-drop-target {
-  filter: saturate(50%);
+.App-ranking-drop-target {
+  filter: brightness(75%);
   border: 5px dashed orange;
-}*/
+  padding: 5px;
+}

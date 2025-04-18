@@ -7,22 +7,22 @@ const CHOICE_DATA = [
   {
     name: 'class 1',
     desc: 'desc 1',
-    textColor: 'white',
-    backgroundColor: 'red',
+    textColor: 'black',
+    backgroundColor: 'pink',
     periods: [1],
   },
   {
     name: 'class 2',
     desc: 'desc 2',
-    textColor: 'white',
-    backgroundColor: 'blue',
+    textColor: 'black',
+    backgroundColor: 'lightblue',
     periods: [1],
   },
   {
     name: 'class 3',
     desc: 'desc 3',
-    textColor: 'white',
-    backgroundColor: 'green',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
     periods: [2],
   },
 ];
@@ -90,10 +90,13 @@ export default function App() {
 
   const onDragLeave = (i, e) => {
     if (e.dataTransfer.types.includes(MIME) && i !== transferring) {
-      if (dropRefCount === 1) {
-        setDropTarget(null);
-      }
-      setDropRefCount(n => n - 1);
+      setDropRefCount(n => {
+        const m = n - 1;
+        if (!m) {
+          setDropTarget(null);
+        }
+        return m;
+      });
     }
   };
 
@@ -123,6 +126,9 @@ export default function App() {
           <li>
             You will only be enrolled into a class one time, even if it&apos;s offered for multiple
             periods.
+          </li>
+          <li>
+            If you submit the form more than once, only your first response will be counted.
           </li>
           <li>
             <strong>No transfers. Please do not ask.</strong>
@@ -175,9 +181,10 @@ export default function App() {
         </div>
       </div>
       <div className='App-control'>
-        To submit your choices, click <a href={submitHref}>HERE</a> and send the email
+        To submit your choices, click <a href={submitHref}>HERE</a> and send the email{' '}
         <strong>from your school account</strong>.
       </div>
+      <a href="mailto:example@example.com?subject=Hello&body=This%20is%20a%20message">Send Email</a>
     </div>
   );
 }
