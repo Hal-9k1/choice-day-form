@@ -1,0 +1,46 @@
+.App {
+  font-family: Verdana, sans-serif;
+  box-sizing: border-box;
+}
+.App-col {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 10px;
+}
+
+.App-chooser {
+  margin: 0 5%;
+  display: flex;
+}
+
+.App-table-header {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.App-table-row {
+  font-size: 24px;
+  text-align: center;
+}
+
+.App-ranking {
+  flex-grow: 1;
+}
+
+.App-ranking-tile {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.App-ranking-transferring {
+  opacity: 0.5;
+}
+
+/*.App-ranking-drop-target {
+  filter: saturate(50%);
+  border: 5px dashed orange;
+}*/
