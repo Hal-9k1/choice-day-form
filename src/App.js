@@ -5,26 +5,112 @@ const MIME = 'application/x-choice-day-selection';
 const PERIODS = 6;
 const CHOICE_DATA = [
   {
-    name: 'class 1',
-    desc: 'desc 1',
+    name: 'QiGong',
+    desc: 'Introduction to QiGong: warm-ups, first 5 moves of Dayan QiGong, a sequence from the '
+      + 'Eight Brocades, moving meditation',
     textColor: 'black',
     backgroundColor: 'pink',
     periods: [1],
   },
   {
-    name: 'class 2',
-    desc: 'desc 2',
+    name: 'Science Focus / Credit Recovery',
+    desc: 'DESCRIPTION',
     textColor: 'black',
     backgroundColor: 'lightblue',
     periods: [1],
   },
   {
-    name: 'class 3',
-    desc: 'desc 3',
+    name: 'Logic Games',
+    desc: 'Variant sudoku and other logic games such as minesweeper',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [1],
+  },
+  {
+    name: 'Dalgona Coffee',
+		desc: 'Come join the queens in making dagona coffee, matcha, and fruit teas. You will learn '
+			+ 'how to whip up the most delectable coffee and then you get to DRINK ITT YUMM ',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [1],
+  },
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [1],
+  },
+
+  {
+    name: 'Friendship Bracelet Making',
+		desc: 'During this workshop leadership students will be leading an activity in making friendship '
+			+ 'bracelets out of embroidery string. Students will get the opportunity to follow along a beginner '
+			+ 'video to learn the basics in making a friendship bracelet. Students will be given enough time to '
+			+ 'complete their bracelet before moving onto another slightly more challenging bracelet pattern. '
+			+ 'Students can make as many bracelets as they want depending on the materials left over from the '
+			+ 'first bracelet.',
     textColor: 'black',
     backgroundColor: 'lightgreen',
     periods: [2],
   },
+
+  {
+    name: 'Karaoke',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
+  {
+    name: 'Intro to Veganism',
+    desc: 'DESCRIPTION',
+    textColor: 'black',
+    backgroundColor: 'lightgreen',
+    periods: [2],
+  },
+
 ];
 
 function getDefaultChoices() {
