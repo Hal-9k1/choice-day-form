@@ -13,6 +13,14 @@ function getDefaultChoices() {
   );
 }
 
+function getSubmitData(choices) {
+  return `${JSON.stringify(CHOICE_DATA).length}/${choices
+    .map(period => period
+      .map(choice => CHOICE_DATA.indexOf(choice))
+      .join(','))
+    .join(';')}`;
+}
+
 export default function App() {
   const [choices, setChoices] = useState(getDefaultChoices);
   const [selected, setSelected] = useState(0);
@@ -21,7 +29,7 @@ export default function App() {
   const [dropRefCount, setDropRefCount] = useState(0);
 
   const submitHref = 'mailto:edimea211@ausdg.us?subject=choice%20day%20response&body='
-    + encodeURI(choices.map(period => period.map(choice => CHOICE_DATA.indexOf(choice)).join(',')).join(';'));
+    + encodeURI(getSubmitData(choices));
 
   const onDragEnd = useCallback(() => {
     setTransferring(null);
@@ -79,7 +87,6 @@ export default function App() {
         .with(i, choices[selected][srcIdx])
         .with(srcIdx, choices[selected][i])
       ));
-    } else {
     }
   };
   return (
@@ -89,8 +96,8 @@ export default function App() {
         <p>Rank your class selection for Choice Day!</p>
         <ul>
           <li>
-            Click on each period, then reorder the class choices so your more preferred classes for
-            that period are on top.
+            Click on each period, then reorder the class choices by dragging them so your more
+            preferred classes for that period are on top.
           </li>
           <li>
             Your highest ranked class preferences will be chosen where possible.
@@ -114,16 +121,17 @@ export default function App() {
         <div className='App-col App-period'>
           <div className='App-table-header'>Period</div>
           {Array(PERIODS).fill(null).map((_, i) => (
-            <div
+            <button
               className={'App-table-row'
                 + (i % 2 ? ' App-table-row-alt' : '')
                 + (i === selected ? ' App-table-row-selected' : '')
               }
               onClick={() => setSelected(i)}
+              type='button'
               key={`key-${i}`}
             >
               {i + 1}
-            </div>
+            </button>
           ))}
         </div>
         <div className='App-col App-ranking'>
@@ -152,7 +160,9 @@ export default function App() {
                   draggable={true}
                 >
                   <div className='App-ranking-title'>{getOrdinal(i + 1)} choice: {choice.name}</div>
-                  <div className='App-ranking-desc'>{choice.desc}</div>
+                  <div className='App-ranking-desc'>{choice.desc.split('\n').map(line => (
+                    <p key={line}>{line}</p>
+                  ))}</div>
                 </div>
               </div>;
             })}

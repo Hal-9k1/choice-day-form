@@ -32,13 +32,17 @@
 }
 
 .App-table-row {
+  display: block;
+  width: 100%;
   position: relative;
   font-size: 24px;
   text-align: center;
   cursor: pointer;
+  border: none;
   border-right: 4px solid var(--primary);
   padding: 15px;
   vertical-align: middle;
+  margin: none;
 }
 
 .App-table-row-selected::after {
@@ -89,4 +93,8 @@
 
 .App-ranking-title {
   font-weight: bold;
+}
+
+.App-ranking-desc p {
+  margin: 0;
 }
