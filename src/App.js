@@ -13,7 +13,7 @@ const CHOICE_DATA = [
   },
   {
     name: 'Science Focus / Credit Recovery',
-    desc: 'DESCRIPTION',
+    desc: 'N/A',
     periods: [1],
   },
   {
@@ -131,12 +131,12 @@ const CHOICE_DATA = [
   },
   {
     name: 'Capture the Flag',
-    desc: 'DESCRIPTION',
+    desc: 'N/A',
     periods: [5],
   },
   {
     name: 'Just Dance',
-    desc: 'DESCRIPTION',
+    desc: 'N/A',
     periods: [5],
   },
   {
@@ -187,11 +187,6 @@ function shouldUseWhiteText(hue) {
     return 0.5 - 0.5 * Math.max(Math.min(k - 3, 9 - k, 1), -1);
   };
   // https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
-  console.log(hue, Math.sqrt(
-    f(0) * f(0) * 0.241 +
-    f(8) * f(8) * 0.691 +
-    f(4) * f(4) * 0.068
-  ));
   return Math.sqrt(
     f(0) * f(0) * 0.241 +
     f(8) * f(8) * 0.691 +
@@ -221,9 +216,13 @@ export default function App() {
   }, []);
 
   const onDragStart = (i, e) => {
+    console.log(i);
     e.dataTransfer.setData(MIME, i);
     e.dataTransfer.dropEffect = 'move';
     setTransferring(i);
+    if (dropTarget === i) {
+      setDropTarget(null);
+    }
   };
 
   const onDragOver = (i, e) => {
@@ -232,18 +231,25 @@ export default function App() {
   };
 
   const onDragEnter = (i, e) => {
-    if (e.dataTransfer.types.includes(MIME) && i !== transferring) {
-      setDropTarget(i);
-      setDropRefCount(n => n + 1);
+    console.log('enter', i, transferring, e.dataTransfer.types.includes(MIME));
+    if (e.dataTransfer.types.includes(MIME) && transferring !== null && i !== transferring) {
+      console.log('drop target set');
+      setDropRefCount(n => {
+        const m = n + 1;
+        setDropTarget(i);
+        return m;
+      });
     }
   };
 
   const onDragLeave = (i, e) => {
-    if (e.dataTransfer.types.includes(MIME) && i !== transferring) {
+    console.log('leave', i, transferring);
+    if (e.dataTransfer.types.includes(MIME) && transferring !== null && i !== transferring) {
       setDropRefCount(n => {
         const m = n - 1;
-        if (!m) {
+        if (m < 1) {
           setDropTarget(null);
+          console.log('cleared');
         }
         return m;
       });
@@ -252,10 +258,15 @@ export default function App() {
 
   const onDrop = (i, e) => {
     e.preventDefault();
-    setChoices(choices.with(selected, choices[selected]
-      .with(i, choices[selected][e.dataTransfer.getData(MIME)])
-      .with(e.dataTransfer.getData(MIME), choices[selected][i])
-    ));
+    const srcIdx = parseInt(e.dataTransfer.getData(MIME));
+    if (Number.isFinite(srcIdx)) {
+      setChoices(choices.with(selected, choices[selected]
+        .with(i, choices[selected][srcIdx])
+        .with(srcIdx, choices[selected][i])
+      ));
+    } else {
+      console.log(e.dataTransfer.types, JSON.stringify(e.dataTransfer.getData(MIME)), srcIdx);
+    }
   };
   return (
     <div className='App'>
@@ -326,7 +337,7 @@ export default function App() {
                   onDragStart={e => onDragStart(i, e)}
                   draggable={true}
                 >
-                  <div className='App-ranking-title'>{getOrdinal(i + 1)} choice: {choice?.name}</div>
+                  <div className='App-ranking-title'>{getOrdinal(i + 1)} choice: {choice.name}</div>
                   <div className='App-ranking-desc'>{choice.desc}</div>
                 </div>
               </div>;
