@@ -3,7 +3,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import process from 'process';
-import pkg from './package.json' assert { type: 'json' };
 
 export default {
   mode: process.env.NODE_ENV,
@@ -16,7 +15,7 @@ export default {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      title: pkg.productName,
+      title: 'ASTI 2025 Choice Day Signup Form',
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),

@@ -86,3 +86,7 @@
   border: 5px dashed orange;
   padding: 5px;
 }
+
+.App-ranking-title {
+  font-weight: bold;
+}
