@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import 'drag-drop-touch';
 import './App.css';
 
 const MIME = 'application/x-choice-day-selection';
@@ -8,80 +9,60 @@ const CHOICE_DATA = [
     name: 'QiGong',
     desc: 'Introduction to QiGong: warm-ups, first 5 moves of Dayan QiGong, a sequence from the '
       + 'Eight Brocades, moving meditation.',
-    textColor: 'black',
-    backgroundColor: 'pink',
     periods: [1],
   },
   {
     name: 'Science Focus / Credit Recovery',
     desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightblue',
     periods: [1],
   },
   {
     name: 'Logic Games',
     desc: 'Variant sudoku and other logic games such as minesweeper.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [1],
   },
   {
     name: 'Dalgona Coffee',
-		desc: 'Come join the queens in making Dagona coffee, matcha, and fruit teas. You will learn '
-			+ 'how to whip up the most delectable coffee and then you get to DRINK ITT YUMM',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
+    desc: 'Come join the queens in making Dagona coffee, matcha, and fruit teas. You will learn '
+      + 'how to whip up the most delectable coffee and then you get to DRINK ITT YUMM',
     periods: [1],
   },
   {
     name: 'Intro to Veganism',
     desc: 'Are you vegan curious? Come to learn about the many benefits about moving to an '
       + 'animal-free diet. Try food samples and learn a few vegan hacks.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [1],
   },
   {
     name: 'Friendship Bracelet Making',
-		desc: 'During this workshop leadership students will be leading an activity in making friendship '
-			+ 'bracelets out of embroidery string. Students will get the opportunity to follow along a beginner '
-			+ 'video to learn the basics in making a friendship bracelet. Students will be given enough time to '
-			+ 'complete their bracelet before moving onto another slightly more challenging bracelet pattern. '
-			+ 'Students can make as many bracelets as they want depending on the materials left over from the '
-			+ 'first bracelet.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
+    desc: 'During this workshop leadership students will be leading an activity in making friendship '
+      + 'bracelets out of embroidery string. Students will get the opportunity to follow along a beginner '
+      + 'video to learn the basics in making a friendship bracelet. Students will be given enough time to '
+      + 'complete their bracelet before moving onto another slightly more challenging bracelet pattern. '
+      + 'Students can make as many bracelets as they want depending on the materials left over from the '
+      + 'first bracelet.',
     periods: [2],
   },
   {
     name: 'Karaoke',
     desc: 'Sing your favorite songs with friends!',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [2, 3],
   },
   {
     name: 'Murder Mystery',
     desc: 'Presentation about a fictional local murder and using deductive techniques to solve the '
       + 'case.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [2],
   },
   {
     name: 'Homeland Security guest speaker',
     desc: 'Special Agent Smith and her team present on homeland security, their career and '
       + 'education paths, and some famous cases they worked on.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [2, 3, 4],
   },
   {
     name: 'Reffing & Basketball',
     desc: 'Come play basketball in the gym with trained referee Mr. Zalvala.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [2, 3, 6],
   },
   {
@@ -96,58 +77,42 @@ const CHOICE_DATA = [
         (GIS).
       </p>
     </>,
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [2, 3],
   },
   {
     name: 'Mocktails',
     desc: 'Layering and mixing non-alcoholic drinks, in collaboration with Ms. Corbally.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [3],
   },
   {
     name: 'Red Cross guest speaker',
     desc: 'Presentation, demonstration, and practice of first aid and CPR on dummies.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [3, 4],
   },
   {
     name: 'Photography guest speaker',
     desc: 'Watch guest speaker Aliah\'s presentation on photography techniques and composition.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [4],
   },
   {
     name: 'Elevating Ramen',
     desc: 'Play chopstick-practice games to win ingredients to elevate your ramen!',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [4],
   },
   {
     name: 'Robotics Engineering guest speaker',
     desc: 'Guest speaker Leo Chan discusses ',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [4],
   },
   {
     name: 'Volleyball & Basketball',
     desc: 'Players are sorted into teams and pitted against each other to test their athletic and '
       + 'teamwork abilities!',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [4],
   },
   {
     name: 'Social and Board Games',
     desc: 'Yahtzee, Scattergories, Would You Rather?, Apples to Apples, and similar.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
     periods: [5],
   },
   {
@@ -157,51 +122,37 @@ const CHOICE_DATA = [
       + 'and learn new instruments. We have drums, guitars, basses, pianos, and more to learn. If you '
       + 'have ever wanted to learn any of these instruments then this workshop is your chance to '
       + 'start. by the end everyone will be able to play together and jam.',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [5],
   },
   {
     name: 'Youth Commissioner guest speaker',
-    desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    desc: 'Saran will discuss how she got involved in the community as a member of the League of Women Voters, the Youth Commisioner of California, as well as many other positions. She will then discuss the importance of getting involved as youth and how you can easily too.',
+    periods: [5],
   },
   {
     name: 'Capture the Flag',
     desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [5],
   },
   {
     name: 'Just Dance',
     desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    periods: [5],
   },
   {
     name: 'Chemical Engineering guest speaker',
-    desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    desc: 'Professor Josh Hubbard will give specific insights on the field of battery innovation, and sustainability in chemistry as well as career and project prospects in the field. This will be followed by a 30 min experiment with colored fire.',
+    periods: [6],
   },
   {
-    name: 'Introduction to saltwater tanks',
-    desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    name: 'Introduction to salt-water tanks',
+    desc: 'Setting up and caring for a hobbyist salt-water fish tank.',
+    periods: [6],
   },
   {
     name: 'Ultimate Frisbee',
-    desc: 'DESCRIPTION',
-    textColor: 'black',
-    backgroundColor: 'lightgreen',
-    periods: [2],
+    desc: 'Players are sorted into teams and pitted against each other to test their athletic and teamwork abilities!',
+    periods: [6],
   },
 ];
 
@@ -225,6 +176,27 @@ function getOrdinal(num) {
     suffix = 'th';
   }
   return num + suffix;
+}
+
+function shouldUseWhiteText(hue) {
+  const s = 1;
+  const l = 0.5;
+  const a = 0.5;
+  const f = n => {
+    const k = (n + hue / 30) % 12;
+    return 0.5 - 0.5 * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  };
+  // https://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+  console.log(hue, Math.sqrt(
+    f(0) * f(0) * 0.241 +
+    f(8) * f(8) * 0.691 +
+    f(4) * f(4) * 0.068
+  ));
+  return Math.sqrt(
+    f(0) * f(0) * 0.241 +
+    f(8) * f(8) * 0.691 +
+    f(4) * f(4) * 0.068
+  ) < 0.45;
 }
 
 export default function App() {
@@ -332,8 +304,9 @@ export default function App() {
         <div className='App-col App-ranking'>
           <div className='App-table-header'>Ranking</div>
           <div className='App-ranking-body'>
-            {choices[selected].map((choice, i) => (
-              <div
+            {choices[selected].map((choice, i) => {
+              const hue = CHOICE_DATA.indexOf(choice) * 3 % CHOICE_DATA.length / CHOICE_DATA.length * 360;
+              return <div
                 className={'App-ranking-tile'
                   + (transferring === i ? ' App-ranking-transferring' : '')
                   + (dropTarget === i ? ' App-ranking-drop-target' : '')
@@ -342,7 +315,10 @@ export default function App() {
                 onDragLeave={e => onDragLeave(i, e)}
                 onDragOver={e => onDragOver(i, e)}
                 onDrop={e => onDrop(i, e)}
-                style={{ color: choice.textColor, backgroundColor: choice.backgroundColor }}
+                style={{
+                  color: shouldUseWhiteText(hue) ? 'white' : 'black',
+                  backgroundColor: `hsl(${hue}, 100%, 50%)`
+                }}
                 key={`key-${i}`}
               >
                 <div
@@ -350,19 +326,18 @@ export default function App() {
                   onDragStart={e => onDragStart(i, e)}
                   draggable={true}
                 >
-                  <div className='App-ranking-title'>{getOrdinal(i + 1)} choice: {choice.name}</div>
+                  <div className='App-ranking-title'>{getOrdinal(i + 1)} choice: {choice?.name}</div>
                   <div className='App-ranking-desc'>{choice.desc}</div>
                 </div>
-              </div>
-            ))}
+              </div>;
+            })}
           </div>
         </div>
       </div>
       <div className='App-control'>
-        To submit your choices, click <a href={submitHref}>HERE</a> and send the email{' '}
-        <strong>from your school account</strong>.
+        To submit your choices, click <a href={submitHref} target='_blank'>HERE</a> and send the email{' '}
+        <strong>from your school account</strong>. Do not change the subject or body of the email.
       </div>
-      <a href="mailto:example@example.com?subject=Hello&body=This%20is%20a%20message">Send Email</a>
     </div>
   );
 }
