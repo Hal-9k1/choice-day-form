@@ -1,28 +1,12 @@
 import { useState, useCallback, useEffect } from 'react';
 import 'drag-drop-touch';
+import { createChoices, getSubmitData, getOrdinal, shouldUseWhiteText } from './utils.js';
 import CHOICE_DATA from './choiceData.json';
-import { getOrdinal, shouldUseWhiteText } from './utils.js';
+import consts from './consts.js';
 import './App.css';
 
-const MIME = 'application/x-choice-day-selection';
-const PERIODS = 6;
-
-function getDefaultChoices() {
-  return Array(PERIODS).fill(null).map((_, i) =>
-    CHOICE_DATA.filter(choice => choice.periods.includes(i + 1))
-  );
-}
-
-function getSubmitData(choices) {
-  return `${JSON.stringify(CHOICE_DATA).length}/${choices
-    .map(period => period
-      .map(choice => CHOICE_DATA.indexOf(choice))
-      .join(','))
-    .join(';')}`;
-}
-
 export default function App() {
-  const [choices, setChoices] = useState(getDefaultChoices);
+  const [choices, setChoices] = useState(createChoices);
   const [selected, setSelected] = useState(0);
   const [transferring, setTransferring] = useState(null);
   const [dropTarget, setDropTarget] = useState(null);
@@ -43,7 +27,7 @@ export default function App() {
   }, []);
 
   const onDragStart = (i, e) => {
-    e.dataTransfer.setData(MIME, '' + i);
+    e.dataTransfer.setData(consts.MIME, '' + i);
     e.dataTransfer.dropEffect = 'move';
     setTransferring(i);
     if (dropTarget === i) {
@@ -57,7 +41,7 @@ export default function App() {
   };
 
   const onDragEnter = (i, e) => {
-    if (e.dataTransfer.types.includes(MIME) && transferring !== null && i !== transferring) {
+    if (e.dataTransfer.types.includes(consts.MIME) && transferring !== null && i !== transferring) {
       setDropRefCount(n => {
         const m = n + 1;
         setDropTarget(i);
@@ -67,7 +51,7 @@ export default function App() {
   };
 
   const onDragLeave = (i, e) => {
-    if (e.dataTransfer.types.includes(MIME) && transferring !== null && i !== transferring) {
+    if (e.dataTransfer.types.includes(consts.MIME) && transferring !== null && i !== transferring) {
       setDropRefCount(n => {
         const m = n - 1;
         if (m < 1) {
@@ -81,7 +65,7 @@ export default function App() {
   const onDrop = (i, e) => {
     e.preventDefault();
     onDragEnd();
-    const srcIdx = parseInt(e.dataTransfer.getData(MIME));
+    const srcIdx = parseInt(e.dataTransfer.getData(consts.MIME));
     if (Number.isFinite(srcIdx)) {
       setChoices(choices.with(selected, choices[selected]
         .with(i, choices[selected][srcIdx])
@@ -120,7 +104,7 @@ export default function App() {
       <div className='App-chooser'>
         <div className='App-col App-period'>
           <div className='App-table-header'>Period</div>
-          {Array(PERIODS).fill(null).map((_, i) => (
+          {Array(consts.PERIODS).fill(null).map((_, i) => (
             <button
               className={'App-table-row'
                 + (i % 2 ? ' App-table-row-alt' : '')
@@ -128,7 +112,7 @@ export default function App() {
               }
               onClick={() => setSelected(i)}
               type='button'
-              key={`key-${i}`}
+              key={`key-${i}`} // Content of the element IS the index
             >
               {i + 1}
             </button>
@@ -152,7 +136,7 @@ export default function App() {
                   color: shouldUseWhiteText(hue) ? 'white' : 'black',
                   backgroundColor: `hsl(${hue}, 100%, 50%)`
                 }}
-                key={`key-${i}`}
+                key={CHOICE_DATA.indexOf(choice)}
               >
                 <div
                   className='App-ranking-data'

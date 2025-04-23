@@ -68,7 +68,7 @@
 .App-ranking-body {
   padding: 10px;
   overflow-y: auto;
-	height: 337px;
+	height: 330px;
 }
 
 .App-ranking {
@@ -76,6 +76,7 @@
 }
 
 .App-ranking-tile {
+  cursor: move;
   padding: 10px;
   border-radius: 20px;
   margin-bottom: 10px;

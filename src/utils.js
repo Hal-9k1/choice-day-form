@@ -1,3 +1,6 @@
+import CHOICE_DATA from './choiceData.json';
+import consts from './consts.js';
+
 export function getOrdinal(num) {
   let suffix;
   if (num % 100 > 10 && num % 100 < 14) {
@@ -28,4 +31,18 @@ export function shouldUseWhiteText(hue) {
     f(8) * f(8) * 0.691 +
     f(4) * f(4) * 0.068
   ) < 0.45;
+}
+
+export function createChoices() {
+  return Array(consts.PERIODS).fill(null).map((_, i) =>
+    CHOICE_DATA.filter(choice => choice.periods.includes(i + 1))
+  );
+}
+
+export function getSubmitData(choices) {
+  return `${JSON.stringify(CHOICE_DATA).length}/${choices
+    .map(period => period
+      .map(choice => CHOICE_DATA.indexOf(choice))
+      .join(','))
+    .join(';')}`;
 }
